@@ -9,11 +9,11 @@
 class Match
 {
 private:
-	int width, height;
-	int x,y;
-	int score1, score2;
-	char up1, up2, down1, down2;
-	Board* status;
+	int width, height;	//Kích thước sân chơi
+	int x,y;			//Vị trí sân chơi
+	int score1, score2;	//Điểm của người chơi
+	char up1, up2, down1, down2; //Các nút điều khiển
+	Board* status; 
 	Board* playground;
 	Ball* gball;
 	Bar* player1;

@@ -1,12 +1,7 @@
-﻿  Bar.cpp
+﻿  Ball.cpp
+  Bar.cpp
   Board.cpp
   Match.cpp
   main.cpp
   Generating Code...
-graphics.lib(dibutil.obj) : warning LNK4099: PDB 'bgi.pdb' was not found with 'graphics.lib(dibutil.obj)' or at 'E:\Bai tap\OOP_Seminar_1\PingPong\Debug\bgi.pdb'; linking object as if no debug info
-graphics.lib(drawing.obj) : warning LNK4099: PDB 'bgi.pdb' was not found with 'graphics.lib(drawing.obj)' or at 'E:\Bai tap\OOP_Seminar_1\PingPong\Debug\bgi.pdb'; linking object as if no debug info
-graphics.lib(file.obj) : warning LNK4099: PDB 'bgi.pdb' was not found with 'graphics.lib(file.obj)' or at 'E:\Bai tap\OOP_Seminar_1\PingPong\Debug\bgi.pdb'; linking object as if no debug info
-graphics.lib(misc.obj) : warning LNK4099: PDB 'bgi.pdb' was not found with 'graphics.lib(misc.obj)' or at 'E:\Bai tap\OOP_Seminar_1\PingPong\Debug\bgi.pdb'; linking object as if no debug info
-graphics.lib(winbgi.obj) : warning LNK4099: PDB 'bgi.pdb' was not found with 'graphics.lib(winbgi.obj)' or at 'E:\Bai tap\OOP_Seminar_1\PingPong\Debug\bgi.pdb'; linking object as if no debug info
-graphics.lib(winthread.obj) : warning LNK4099: PDB 'bgi.pdb' was not found with 'graphics.lib(winthread.obj)' or at 'E:\Bai tap\OOP_Seminar_1\PingPong\Debug\bgi.pdb'; linking object as if no debug info
   18120506_18120520.vcxproj -> E:\Bai tap\OOP_Seminar_1\PingPong\Debug\18120506_18120520.exe

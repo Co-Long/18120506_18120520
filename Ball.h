@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "graphics.h"
 #pragma comment(lib, "graphics.lib")
 
@@ -17,6 +17,7 @@ public:
 	void reset();
 	void draw();
 	void erase();
+	//Banh di chuyển giữa biên top, bottom, left, right
 	void move(int top, int bottom, int left, int right);
 };
 

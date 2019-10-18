@@ -1,4 +1,4 @@
-#include "Match.h"
+﻿#include "Match.h"
 using namespace std;
 
 Match::Match(int cordiX, int cordiY, int w, int h) {
@@ -25,6 +25,7 @@ Match::~Match() {
 void Match::scoreup() {
 	if (gball->x + gball->r == x + width) {
 		score1++;
+		//reset màn chơi
 		gball->reset();
 		player1->reset();
 		player2->reset();
