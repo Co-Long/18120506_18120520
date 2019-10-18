@@ -156,7 +156,6 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Match.cpp" />
-    <ClCompile Include="Process.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />

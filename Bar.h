@@ -1,6 +1,5 @@
 #pragma once
 #include<iostream>
-#include"Process.h"
 #include "graphics.h"
 #pragma comment(lib, "graphics.lib")
 
