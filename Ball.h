@@ -19,5 +19,12 @@ public:
 	void erase();
 	//Banh di chuyển giữa biên top, bottom, left, right
 	void move(int top, int bottom, int left, int right);
+	/*int getX();
+	int getY();
+	int getDX();
+	void setDX(int);
+	int getDY();
+	void setDY(int);*/
+	void setSpeed(int);
 };
 

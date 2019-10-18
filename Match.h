@@ -25,6 +25,6 @@ public:
 	void draw();	//Vẽ màn chơi
 	void control();	//Nhận điều kiển từ bàn phím
 	void run();	//Chạy màn chơi
-
+	void collision(); //Xu ly va cham
 };
 

@@ -42,11 +42,38 @@ void Ball::erase() {
 
 //Di chuyen ball
 void Ball::move(int top, int bottom, int left, int right) {
-		if (x + r >= right || x - r <= left) dx = -dx;
-		if (y + r >= bottom || y - r <= top) dy = -dy;
+		erase();
+
 		x += dx;
 		y += dy;
+
 		draw();
-		delay(100 - speed);
-		erase();
+}
+
+//int Ball::getX() {
+//	return x;
+//}
+//
+//int Ball::getY() {
+//	return y;
+//}
+//
+//int Ball::getDX() {
+//	return dx;
+//}
+//
+//void Ball::setDX(int d) {
+//	dx = d;
+//}
+//
+//int Ball::getDY() {
+//	return dy;
+//}
+//
+//void Ball::setDY(int d) {
+//	dy = d;
+//}
+
+void Ball::setSpeed(int s) {
+	speed = s;
 }

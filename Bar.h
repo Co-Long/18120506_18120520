@@ -14,11 +14,13 @@ public:
 	Bar(int x, int y, int length);
 	void reset();
 	void setLength(int len);
+	int getLength();
 	int getXPos();
 	int getYPos();
 	void moveUp();
 	void moveDown();
 	void draw();
-
+	void erase();
+	void move();
 };
 

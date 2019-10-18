@@ -24,6 +24,10 @@ void Bar::setLength(int len) {
 	length = len;
 }
 
+int Bar::getLength() {
+	return length;
+}
+
 int Bar::getXPos() {
 	return x;
 }
@@ -33,16 +37,22 @@ int Bar::getYPos() {
 }
 
 void Bar::moveUp() {
-	y--;
+	y-=20;
 }
 
 void Bar::moveDown() {
-	y++;
+	y+=20;
 }
 
 void Bar::draw() {
-
+	setcolor(WHITE);
 	setlinestyle(0, 0, 2);
-	line(x, y, x, y+length);
+	line(x, y, x, y + length);
 
+}
+
+void Bar::erase() {
+	setlinestyle(0, 0, 2);
+	setcolor(BLACK);
+	line(x, y, x, y + length);
 }
