@@ -11,9 +11,7 @@ class Match
 private:
 	int width, height;	//Kích thước sân chơi
 	int x,y;			//Vị trí sân chơi
-	int score1, score2;	//Điểm của người chơi
 	char up1, up2, down1, down2; //Các nút điều khiển
-	Board* status; 
 	Board* playground;
 	Ball* gball;
 	Bar* player1;
@@ -21,9 +19,9 @@ private:
 public:
 	Match(int cordiX, int cordiY, int w, int h);
 	~Match();
-	void scoreup();	//Nếu banh va vào tường trái thì player2 ghi điểm và ngược lại. Sau đó reset về vị trí ban đầu
+	void scoreup(Bar* player);	//Nếu banh va vào tường trái thì player2 ghi điểm và ngược lại. Sau đó reset về vị trí ban đầu
 	void draw();	//Vẽ màn chơi
-	void control();	//Nhận điều kiển từ bàn phím
+	void control(int distance);	//Nhận điều kiển từ bàn phím và di chuyển 1 khoảng có độ dài: distance 
 	void run();	//Chạy màn chơi
 	void collision(); //Xu ly va cham
 };

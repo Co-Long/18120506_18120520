@@ -7,9 +7,9 @@
 
 int main()
 {
-	initwindow(1200, 700, "Pingpong");
+	initwindow(1600, 900, "Pingpong");
 
-	Match m(100,50,1000, 700);
+	Match m(300,100,1000, 700);
 	m.run();
 	
 	getch();

@@ -17,10 +17,9 @@ public:
 	int getLength();
 	int getXPos();
 	int getYPos();
-	void moveUp();
-	void moveDown();
+	void moveUp(int distance);
+	void moveDown(int distance);
 	void draw();
 	void erase();
-	void move();
 };
 

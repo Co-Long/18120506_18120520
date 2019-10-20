@@ -36,12 +36,12 @@ int Bar::getYPos() {
 	return y;
 }
 
-void Bar::moveUp() {
-	y-=20;
+void Bar::moveUp(int distance) {
+	y-=distance;
 }
 
-void Bar::moveDown() {
-	y+=20;
+void Bar::moveDown(int distance) {
+	y+= distance;
 }
 
 void Bar::draw() {

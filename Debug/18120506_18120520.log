@@ -1,7 +1,3 @@
-﻿  Ball.cpp
-  Bar.cpp
-  Board.cpp
+﻿E:\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HelloStdio_VS2015.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Match.cpp
-  main.cpp
-  Generating Code...
   18120506_18120520.vcxproj -> E:\Bai tap\OOP_Seminar_1\PingPong\Debug\18120506_18120520.exe
