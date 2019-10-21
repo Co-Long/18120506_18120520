@@ -3,14 +3,18 @@
 #include"Board.h"
 #include"Match.h"
 #include "graphics.h"
+#include "Menu.h"
 #pragma comment(lib, "graphics.lib")
+
 
 int main()
 {
 	initwindow(1000, 800, "Pingpong");
+	char list[50][50] = { "Play now", "How to play", "Quit" };
 
-	Match m(100,100,800, 500);
-	m.run();
+	Menu* menu = new Menu("Ping Pong", list, 3);
+	menu->display();
+	menu->allowControl();
 	
 	getch();
 	closegraph();
