@@ -10,28 +10,24 @@ Match::Match(int cordiX, int cordiY, int w, int h) {
 	height = h;
 	x = cordiX;
 	y = cordiY;
+	score1 = score2 = 0;
 	playground = new Board(x, y, w, h);
-	gball = new Ball(w / 2, h / 2, 10, 40, 1, 1, WHITE);
+	status = new Board(x, y + h + 30, w, h / 5);
+	gball = new Ball(x+w / 2, y+h / 2, h/50, 40, 1, 1, WHITE);
 	player1 = new Bar(x + 15, h / 2 - 5, h/10);
 	player2 = new Bar(x+w-15, h / 2 - 5, h/10);
 }
 
 Match::~Match() {
-	delete playground, gball, player1, player2;
+	delete playground, status, gball, player1, player2;
 }
 
 void Match::scoreup(Bar* player) {
 	if (player==player1) {
-		char s[] = "Player_1 win";
-		settextstyle(1, 0, 3);
-		outtextxy(x+width+40, y+height/2, s);
-		delay(3000);
+		score1++;
 	}
 	else if (player == player2) {
-		char s[] = "Player_2 win";
-		settextstyle(1, 0, 3);
-		outtextxy(x + width/2 + 40, y + height/2, s);
-		delay(3000);
+		score2++;
 	}
 	//reset màn chơi
 	gball->reset();
@@ -39,14 +35,25 @@ void Match::scoreup(Bar* player) {
 	player2->reset();
 	cleardevice();
 	draw();
-	delay(100);
+	delay(1000);
 }
 
 void Match::draw() {
 	playground->draw();
+	status->draw();
 	gball->draw();
 	player1->draw();
 	player2->draw();
+
+	//In điểm của player1
+	char buffer[3];
+	_itoa(score1, buffer, 10);
+	settextstyle(6, 0, 5);
+	outtextxy(status->getX() + status->getWidth()/10, status->getY() + status->getHeight()/3, buffer);
+	//In điểm của player2
+	_itoa(score2, buffer, 10);
+	settextstyle(6, 0, 5);
+	outtextxy(status->getX() + status->getWidth()- status->getWidth()/10, status->getY() + status->getHeight() / 3, buffer);
 }
 
 void Match::control(int distance) {
@@ -57,11 +64,11 @@ void Match::control(int distance) {
 		char control = (char)getch();
 
 		if (control == up1) {
-			if (player1->getYPos() - distance > y)
+			if (player1->getYPos() - distance > y+1)
 				player1->moveUp(distance);
 		}
 		if (control == up2) {
-			if (player2->getYPos() - distance > y)
+			if (player2->getYPos() - distance > y+1)
 				player2->moveUp(distance);
 		}
 		if (control == down1) {

@@ -12,7 +12,9 @@ private:
 	int width, height;	//Kích thước sân chơi
 	int x,y;			//Vị trí sân chơi
 	char up1, up2, down1, down2; //Các nút điều khiển
+	int score1, score2;
 	Board* playground;
+	Board* status;
 	Ball* gball;
 	Bar* player1;
 	Bar* player2;
