@@ -13,9 +13,9 @@ Match::Match(int cordiX, int cordiY, int w, int h) {
 	score1 = score2 = 0;
 	playground = new Board(x, y, w, h);
 	status = new Board(x, y + h + 30, w, h / 5);
-	gball = new Ball(x+w / 2, y+h / 2, h/50, 40, 1, 1, WHITE);
-	player1 = new Bar(x + 15, h / 2 - 5, h/10);
-	player2 = new Bar(x+w-15, h / 2 - 5, h/10);
+	gball = new Ball(x+w / 2, y+h / 2, h/50, 1, WHITE);
+	player1 = new Bar(x + 15, h / 2 - 5, h/5);
+	player2 = new Bar(x+w-15, h / 2 - 5, h/5);
 }
 
 Match::~Match() {
@@ -124,7 +124,7 @@ void Match::run() {
 	draw();
 
 	while (true) {
-		gball->move(y, y + height, x, x + width);
+		gball->move();
 		collision();
 		control(height /40);
 

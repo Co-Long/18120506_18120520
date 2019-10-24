@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "graphics.h"
+#include<cmath>
 #pragma comment(lib, "graphics.lib")
+#define pi 3.1415926
 
 class Ball
 {
@@ -13,12 +15,12 @@ public:
 	int r;
 
 	Ball();
-	Ball(int x, int y, int r, int speed, int dx, int dy, int color);
+	Ball(int x, int y, int r, int speed, int color);
 	void reset();
 	void draw();
 	void erase();
-	//Banh di chuyển giữa biên top, bottom, left, right
-	void move(int top, int bottom, int left, int right);
+	void move();
+	void speedup();
 	/*int getX();
 	int getY();
 	int getDX();
@@ -28,3 +30,4 @@ public:
 	void setSpeed(int);
 };
 
+float ROUND(float x);

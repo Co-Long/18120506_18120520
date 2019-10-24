@@ -1,10 +1,19 @@
 ﻿#include "Ball.h"
 
+float ROUND(float x) {
+	float result;
+	if (x >= 0)
+		result = floor(x + 0.5);
+	if (x < 0)
+		result = -floor(-x + 0.5);
+	return result;
+}
+
 Ball::Ball() {
 
 }
 
-Ball::Ball(int x, int y, int r, int speed, int dx, int dy, int color) {
+Ball::Ball(int x, int y, int r, int speed, int color) {
 	this->x = x; // vi tri truc x
 	this->y = y; // vi tri truc y
 	originalx = x;
@@ -12,8 +21,9 @@ Ball::Ball(int x, int y, int r, int speed, int dx, int dy, int color) {
 	this->r = r; // radius
 	this->speed = speed; 
 	originalspeed = speed;
-	this->dx = dx; //Huong thay doi truc x
-	this->dy = dy; //Huong thay doi truc y
+	
+	this->dx = ROUND(speed * cos(pi/4)); //Huong thay doi truc x
+	this->dy = ROUND(speed * sin(pi/4)); //Huong thay doi truc y
 	this->color = color;
 }
 
@@ -41,13 +51,35 @@ void Ball::erase() {
 }
 
 //Di chuyen ball
-void Ball::move(int top, int bottom, int left, int right) {
+void Ball::move() {
 		erase();
 
 		x += dx;
 		y += dy;
 
 		draw();
+}
+
+void Ball::speedup() {
+	speed += 1;
+
+	if (dx <= 0 && dy>=0) {
+		dx = -ROUND(speed * cos(pi / 4)); 
+		dy = ROUND(speed * sin(pi / 4)); 
+	}
+	else if (dx >= 0 && dy <= 0) {
+		dx = ROUND(speed * cos(pi / 4));
+		dy = -ROUND(speed * sin(pi / 4));
+	}
+	else if (dx >= 0 && dy >= 0) {
+		dx = ROUND(speed * cos(pi / 4));
+		dy = ROUND(speed * sin(pi / 4));
+	}
+	else if (dx <= 0 && dy <= 0) {
+		dx = -ROUND(speed * cos(pi / 4));
+		dy = -ROUND(speed * sin(pi / 4));
+	}
+	
 }
 
 //int Ball::getX() {

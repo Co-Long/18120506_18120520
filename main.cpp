@@ -12,7 +12,8 @@ int main()
 	initwindow(1000, 800, "Pingpong");
 	char list[50][50] = { "Play now", "How to play", "Quit" };
 
-	Menu* menu = new Menu("Ping Pong", list, 3);
+	char s[] = "Ping Pong";
+	Menu* menu = new Menu(s, list, 3);
 	menu->display();
 	menu->allowControl();
 	
