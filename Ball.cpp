@@ -1,5 +1,6 @@
 ﻿#include "Ball.h"
 
+//Hàm làm tròn số
 float ROUND(float x) {
 	float result;
 	if (x >= 0)
@@ -10,7 +11,13 @@ float ROUND(float x) {
 }
 
 Ball::Ball() {
-
+	x = y = 0;
+	originalx = originaly = 0;
+	r = 0; // radius
+	originalspeed = speed=0;
+	dx = dy = 0;
+	alpha = 0;
+	color = WHITE;
 }
 
 Ball::Ball(int x, int y, int r, int speed, int color) {
@@ -19,11 +26,14 @@ Ball::Ball(int x, int y, int r, int speed, int color) {
 	originalx = x;
 	originaly = y;
 	this->r = r; // radius
+
+	alpha = pi / 4;
 	this->speed = speed; 
 	originalspeed = speed;
-	
-	this->dx = ROUND(speed * cos(pi/4)); //Huong thay doi truc x
-	this->dy = ROUND(speed * sin(pi/4)); //Huong thay doi truc y
+
+	this->dx = ROUND(speed * cos(alpha)); //Vận tốc trên trục hoành
+	this->dy = ROUND(speed * sin(alpha)); //Vận tốc trên trục tung
+
 	this->color = color;
 }
 
@@ -32,6 +42,8 @@ void Ball::reset() {
 	x = originalx;
 	y = originaly;
 	speed = originalspeed;
+	dx = ROUND(speed * cos(pi / 4));
+	dy = ROUND(speed * sin(pi / 4));
 }
 
 //Ham ve Ball
@@ -60,52 +72,35 @@ void Ball::move() {
 		draw();
 }
 
-void Ball::speedup() {
-	speed += 1;
+//Hàm tăng tốc banh, Input: độ lệch vận tốc
+void Ball::speedup(double dSpeed) {
+	speed += dSpeed;
 
 	if (dx <= 0 && dy>=0) {
-		dx = -ROUND(speed * cos(pi / 4)); 
-		dy = ROUND(speed * sin(pi / 4)); 
+		dx = -ROUND(speed * cos(alpha*pi/180)); 
+		dy = ROUND(speed * sin(alpha * pi / 180));
 	}
 	else if (dx >= 0 && dy <= 0) {
-		dx = ROUND(speed * cos(pi / 4));
-		dy = -ROUND(speed * sin(pi / 4));
+		dx = ROUND(speed * cos(alpha * pi / 180));
+		dy = -ROUND(speed * sin(alpha * pi / 180));
 	}
 	else if (dx >= 0 && dy >= 0) {
-		dx = ROUND(speed * cos(pi / 4));
-		dy = ROUND(speed * sin(pi / 4));
+		dx = ROUND(speed * cos(alpha * pi / 180));
+		dy = ROUND(speed * sin(alpha * pi / 180));
 	}
 	else if (dx <= 0 && dy <= 0) {
-		dx = -ROUND(speed * cos(pi / 4));
-		dy = -ROUND(speed * sin(pi / 4));
+		dx = -ROUND(speed * cos(alpha * pi / 180));
+		dy = -ROUND(speed * sin(alpha * pi / 180));
 	}
 	
 }
 
-//int Ball::getX() {
-//	return x;
-//}
-//
-//int Ball::getY() {
-//	return y;
-//}
-//
-//int Ball::getDX() {
-//	return dx;
-//}
-//
-//void Ball::setDX(int d) {
-//	dx = d;
-//}
-//
-//int Ball::getDY() {
-//	return dy;
-//}
-//
-//void Ball::setDY(int d) {
-//	dy = d;
-//}
-
-void Ball::setSpeed(int s) {
+void Ball::setSpeed(double s) {
 	speed = s;
+}
+
+//Tạo ra góc alpha ngẫu nhiên trong khoảng min, max (Đơn vị: Độ)
+void Ball::randomDirection(int min, int max) {
+	srand(time(NULL));
+	alpha = (min + rand() % (max+1));
 }

@@ -10,10 +10,10 @@
 int main()
 {
 	initwindow(1000, 800, "Pingpong");
+	char tilte[] = "Ping Pong";
 	char list[50][50] = { "Play now", "How to play", "Quit" };
 
-	char s[] = "Ping Pong";
-	Menu* menu = new Menu(s, list, 3);
+	Menu* menu = new Menu(tilte, list, 3);
 	menu->display();
 	menu->allowControl();
 	

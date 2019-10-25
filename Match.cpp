@@ -1,6 +1,23 @@
 ﻿#include "Match.h"
 using namespace std;
 
+Match::Match() {
+	up1 = 'w';
+	up2 = 'i';
+	down1 = 's';
+	down2 = 'k';
+	width = 0;
+	height = 0;
+	x = 0;
+	y = 0;
+	score1 = score2 = 0;
+	playground = new Board(0, 0, 0, 0);
+	status = new Board(0, 0, 0, 0);
+	gball = new Ball(0, 0,0, 0, WHITE);
+	player1 = new Bar(0, 0, 0);
+	player2 = new Bar(0, 0, 0);
+}
+
 Match::Match(int cordiX, int cordiY, int w, int h) {
 	up1 = 'w';
 	up2 = 'i';
@@ -22,6 +39,15 @@ Match::~Match() {
 	delete playground, status, gball, player1, player2;
 }
 
+//Hàm set nút điều khiển của người chơi
+void Match::setPlayerControl(char player1Up, char player2Up, char player1Down, char player2Down) {
+	up1 = player1Up;
+	up2 = player2Up;
+	down1 = player1Down;
+	down2 = player2Down;
+}
+
+//Ghi điểm, Input: đối tượng người chơi
 void Match::scoreup(Bar* player) {
 	if (player==player1) {
 		score1++;
@@ -79,11 +105,13 @@ void Match::control(int distance) {
 			if (player2->getYPos() < y + height- distance -player1->getLength())
 				player2->moveDown(distance);
 		}
+	
 		player1->draw();
 		player2->draw();
 	}
 }
 
+//Hàm xử lí va chạm
 void Match::collision() {
 	int top = y;
 	int bottom = y + height;
@@ -95,17 +123,23 @@ void Match::collision() {
 		gball->dy = - gball->dy;
 	}
 
-	//Banh chạm vào người chơi
+	//Banh chạm vào người chơi bên phải
 	if (gball->y >= player1->getYPos() &&
 		gball->y <= player1->getYPos() + player1->getLength() &&
 		gball->x - gball->r <= player1->getXPos() + 1) {
+		//Random ra góc alpha mới, tăng tốc banh, đổi hướng banh
+		gball->randomDirection(30,60);
+		gball->speedup(0.5);
 		gball->dx = -gball->dx;
 	}
 
-	//Banh chạm vào người chơi
+	//Banh chạm vào người chơi bên trái
 	if (gball->y >= player2->getYPos() &&
 		gball->y <= player2->getYPos() + player2->getLength() &&
 		gball->x + gball->r >= player2->getXPos() - 1) {
+		//Random ra góc alpha mới, tăng tốc banh, đổi hướng banh
+		gball->randomDirection(30, 60);
+		gball->speedup(0.5);
 		gball->dx = -gball->dx;
 	}
 
@@ -127,6 +161,7 @@ void Match::run() {
 		gball->move();
 		collision();
 		control(height /40);
+		draw();
 
 		delay(10);
 	}

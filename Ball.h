@@ -1,33 +1,35 @@
 ﻿#pragma once
+#pragma comment(lib, "graphics.lib")
 #include "graphics.h"
 #include<cmath>
-#pragma comment(lib, "graphics.lib")
-#define pi 3.1415926
+#include<time.h>
+
+#define pi 3.14159265359
 
 class Ball
 {
+private:
+	int x, y;	//Vị trí của banh
+	int originalx, originaly;	//Vị trí ban đầu của banh
+	double speed, originalspeed;	//Vận tốc của banh
+	double dx, dy;	//Vận tốc theo trục hoành và trục tung
+	double alpha;	//Góc giữa vận tốc và trục hoành
+	int color;	//Màu của banh
+	int r;	//Bán kính của banh
 public:
-	int x, y;
-	int originalx, originaly;
-	int speed, originalspeed;
-	int dx, dy;
-	int color;
-	int r;
-
+	friend class Match;
+	
 	Ball();
 	Ball(int x, int y, int r, int speed, int color);
+	//Trạng thái 
 	void reset();
 	void draw();
 	void erase();
+	//Chuyển động
 	void move();
-	void speedup();
-	/*int getX();
-	int getY();
-	int getDX();
-	void setDX(int);
-	int getDY();
-	void setDY(int);*/
-	void setSpeed(int);
+	void speedup(double);
+	void setSpeed(double);
+	void randomDirection(int, int);
 };
 
 float ROUND(float x);

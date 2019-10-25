@@ -19,8 +19,10 @@ private:
 	Bar* player1;
 	Bar* player2;
 public:
+	Match();
 	Match(int cordiX, int cordiY, int w, int h);
 	~Match();
+	void setPlayerControl(char player1Up, char player2Up, char player1Down, char player2Down);
 	void scoreup(Bar* player);	//Nếu banh va vào tường trái thì player2 ghi điểm và ngược lại. Sau đó reset về vị trí ban đầu
 	void draw();	//Vẽ màn chơi
 	void control(int distance);	//Nhận điều kiển từ bàn phím và di chuyển 1 khoảng có độ dài: distance 
