@@ -67,7 +67,7 @@ void Menu::allowControl()
 				if (select == 0) select = n - 1;
 				else select--;
 				break;
-			case 'l':
+			case 'c':
 				processSubMenu(select);
 				break;
 			}
