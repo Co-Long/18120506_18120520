@@ -18,14 +18,19 @@ private:
 	Ball* gball;
 	Bar* player1;
 	Bar* player2;
-public:
+	static Match* instance; //Singleton
+
 	Match();
 	Match(int cordiX, int cordiY, int w, int h);
+public:
+	static Match* getInstance(int cordiX, int cordiY, int w, int h);
+	static void removeInstance();
+
 	~Match();
 	void setPlayerControl(char player1Up, char player2Up, char player1Down, char player2Down);
 	void scoreup(Bar* player);	//Nếu banh va vào tường trái thì player2 ghi điểm và ngược lại. Sau đó reset về vị trí ban đầu
 	void draw();	//Vẽ màn chơi
-	void control(int distance);	//Nhận điều kiển từ bàn phím và di chuyển 1 khoảng có độ dài: distance 
+	bool control(int distance);	//Nhận điều kiển từ bàn phím và di chuyển 1 khoảng có độ dài: distance 
 	void run();	//Chạy màn chơi
 	void collision(); //Xu ly va cham
 };

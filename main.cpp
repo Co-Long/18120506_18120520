@@ -5,7 +5,7 @@
 #include "graphics.h"
 #include "Menu.h"
 #pragma comment(lib, "graphics.lib")
-
+Match* Match::instance = NULL;
 
 int main()
 {
@@ -13,9 +13,9 @@ int main()
 	char tilte[] = "Ping Pong";
 	char list[50][50] = { "Play now", "How to play", "Quit" };
 
-	Menu* menu = new Menu(tilte, list, 3);
-	menu->display();
-	menu->allowControl();
+	Menu menu(tilte, list, 3);
+	menu.display();
+	menu.allowControl();
 	
 	getch();
 	closegraph();

@@ -3,10 +3,12 @@
 #include <string>
 #include <iostream>
 #include "Match.h"
+#include "Instruction.h"
 #pragma comment(lib, "graphics.lib")
 
 Menu::Menu()
 {
+
 }
 
 Menu::Menu(char title[10], char menu[50][50], int n) {
@@ -36,9 +38,10 @@ void Menu::display()
 	settextstyle(2, 0, 10);
 
 	//hien thi nhung submenu
+	setcolor(WHITE);
 	for (int i = 0; i < n; i++)
 	{
-		if (i == 0) setcolor(LIGHTCYAN);
+		if (i == select) setcolor(LIGHTCYAN);
 		outtextxy(getmaxx() / 2 - textwidth(menu[i]) / 2, getmaxy() / 2 + i * 80, menu[i]);
 		setcolor(WHITE);
 	}
@@ -47,7 +50,6 @@ void Menu::display()
 //cho phep nguoi choi tuong tac len xuong chon menu
 void Menu::allowControl()
 {
-	int select = 0;
 	int prev = 0;
 
 	while (true) {
@@ -83,12 +85,15 @@ void Menu::processSubMenu(int select)
 {
 	cleardevice();
 	if (select == 0) {
-		Match m(100, 100, 800, 500);
-		m.run();
+		Match *match = Match::getInstance(100, 100, 800, 500);
+		match->run();
 		return;
 	}
 
 	if (select == 1) {
+		Instruction::display();
+		Instruction::catchBackEvent();
+		this->display();
 		return;
 	}
 

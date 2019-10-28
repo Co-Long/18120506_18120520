@@ -1,4 +1,6 @@
 ﻿#include "Match.h"
+#include "Menu.h"
+#include "SubMenu.h"
 using namespace std;
 
 Match::Match() {
@@ -33,6 +35,19 @@ Match::Match(int cordiX, int cordiY, int w, int h) {
 	gball = new Ball(x+w / 2, y+h / 2, h/50, 1, WHITE);
 	player1 = new Bar(x + 15, h / 2 - 5, h/5);
 	player2 = new Bar(x+w-15, h / 2 - 5, h/5);
+}
+
+Match* Match::getInstance(int cordiX, int cordiY, int w, int h)
+{
+	if (!instance)
+		instance = new Match(cordiX, cordiY, w, h);
+	return instance;
+}
+
+void Match::removeInstance()
+{
+	delete instance;
+	instance = NULL;
 }
 
 Match::~Match() {
@@ -82,7 +97,7 @@ void Match::draw() {
 	outtextxy(status->getX() + status->getWidth()- status->getWidth()/10, status->getY() + status->getHeight() / 3, buffer);
 }
 
-void Match::control(int distance) {
+bool Match::control(int distance) {
 
 	if (kbhit()) {
 		player1->erase();
@@ -105,10 +120,14 @@ void Match::control(int distance) {
 			if (player2->getYPos() < y + height- distance -player1->getLength())
 				player2->moveDown(distance);
 		}
-	
+		if (control == 'b') {
+			return false;
+		}
 		player1->draw();
 		player2->draw();
 	}
+
+	return true;
 }
 
 //Hàm xử lí va chạm
@@ -155,14 +174,25 @@ void Match::collision() {
 }
 
 void Match::run() {
+	bool playing = true;
 	draw();
-
-	while (true) {
+	
+	while (true && playing) {
 		gball->move();
 		collision();
-		control(height /40);
+		playing = control(height /40);
 		draw();
 
 		delay(10);
 	}
+	
+	cleardevice();
+
+	char tilte[] = "Paused";
+	char list[50][50] = { "Restart", "Resume", "How to play", "Quit" };
+
+	SubMenu menu(tilte, list, 4);
+	menu.display();
+	menu.allowControl();
+
 }
