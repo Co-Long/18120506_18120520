@@ -5,15 +5,16 @@ void Instruction::display()
 {
 	cleardevice();
 	char* title = "How To Play";
-	settextstyle(3, 0, 10);
+	settextstyle(10, 0, 10);
 	setcolor(YELLOW);
 	//Hien thi ten game
 	outtextxy(getmaxx() / 2 - textwidth(title) / 2, 40, title);
 
 	//in ra man hinh rule
-	char* rule[] = { "Luat choi: Moi nguoi choi dieu khien 1 pad de danh qua", 
-		"bong ve phia doi phuong, neu doi phuong", "khong do duoc, ban thang.", "Press b - back to menu","Press c - choose"};
-	settextstyle(2, 0, 9);
+	char* rule[] = { "RULE: Each player control a paddle to bounce the ball", 
+		"toward the opponent. If your opponent can't bounce", "the ball, you win.", 
+		"Press b - back to menu","Press c - choose"};
+	settextstyle(8, 0, 3);
 	setcolor(WHITE);
 	for (int i = 0; i < 5; i++)
 	{

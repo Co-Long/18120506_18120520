@@ -30,14 +30,13 @@ Menu::Menu(char title[10], char menu[50][50], int n) {
 //Hien thi menu
 void Menu::display()
 {
-	settextstyle(3, 0, 10);
+	settextstyle(10, 0, 10);
 	setcolor(YELLOW);
 	//Hien thi ten game
-	outtextxy(getmaxx() / 2 - textwidth(title) / 2, 40, title);
-
-	settextstyle(2, 0, 10);
+	outtextxy(getmaxx() / 2 - textwidth(title) / 2, 60, title);
 
 	//hien thi nhung submenu
+	settextstyle(10, 0, 7);
 	setcolor(WHITE);
 	for (int i = 0; i < n; i++)
 	{

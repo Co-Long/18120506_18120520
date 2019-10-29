@@ -147,7 +147,7 @@ void Match::collision() {
 		gball->y <= player1->getYPos() + player1->getLength() &&
 		gball->x - gball->r <= player1->getXPos() + 1) {
 		//Random ra góc alpha mới, tăng tốc banh, đổi hướng banh
-		gball->randomDirection(30,60);
+		gball->randomDirection(30,45);
 		gball->speedup(0.5);
 		gball->dx = -gball->dx;
 	}
@@ -157,7 +157,7 @@ void Match::collision() {
 		gball->y <= player2->getYPos() + player2->getLength() &&
 		gball->x + gball->r >= player2->getXPos() - 1) {
 		//Random ra góc alpha mới, tăng tốc banh, đổi hướng banh
-		gball->randomDirection(30, 60);
+		gball->randomDirection(30, 45);
 		gball->speedup(0.5);
 		gball->dx = -gball->dx;
 	}

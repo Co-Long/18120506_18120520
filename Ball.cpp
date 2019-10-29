@@ -41,9 +41,10 @@ Ball::Ball(int x, int y, int r, int speed, int color) {
 void Ball::reset() {
 	x = originalx;
 	y = originaly;
+	alpha = pi / 4;
 	speed = originalspeed;
-	dx = ROUND(speed * cos(pi / 4));
-	dy = ROUND(speed * sin(pi / 4));
+	dx = ROUND(speed * cos(alpha));
+	dy = ROUND(speed * sin(alpha));
 }
 
 //Ham ve Ball
